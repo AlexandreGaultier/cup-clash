@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import styles from './RulesModal.module.css';
 import { CLASSES } from '../data/classes';
 
