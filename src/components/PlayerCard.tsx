@@ -72,7 +72,7 @@ export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete 
             onClick={() => onDelete(player.id)}
             className={styles.deleteButton}
           >
-            🗑️
+            X
           </button>
         </div>
         <div className={styles.cupContainer}>

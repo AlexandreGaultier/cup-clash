@@ -5,10 +5,46 @@ import { Dice } from './Dice';
 import { CLASSES } from '../data/classes';
 import styles from './PlayerList.module.css';
 
-const DEFAULT_PLAYERS = ['Alexandre', 'Adeline', 'Eline', 'Maxime', 'Tom'];
-
 export const PlayerList = () => {
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([
+    {
+      id: '1',
+      name: 'Alexandre',
+      hp: 5,
+      maxHp: 5,
+      isRevealed: false,
+      class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
+      skillUsesLeft: 2
+    },
+    {
+      id: '2',
+      name: 'Adeline',
+      hp: 5,
+      maxHp: 5,
+      isRevealed: false,
+      class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
+      skillUsesLeft: 2
+    },
+    {
+      id: '3',
+      name: 'Eline',
+      hp: 5,
+      maxHp: 5,
+      isRevealed: false,
+      class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
+      skillUsesLeft: 2
+    },
+    {
+      id: '4',
+      name: 'Maxime',
+      hp: 5,
+      maxHp: 5,
+      isRevealed: false,
+      class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
+      skillUsesLeft: 2
+    }
+  ]);
+
   const [newPlayerName, setNewPlayerName] = useState('');
 
   const addPlayer = () => {
@@ -32,20 +68,6 @@ export const PlayerList = () => {
     if (e.key === 'Enter') {
       addPlayer();
     }
-  };
-
-  const addDefaultPlayers = () => {
-    const defaultPlayersList = DEFAULT_PLAYERS.map(name => ({
-      id: crypto.randomUUID(),
-      name,
-      hp: 5,
-      maxHp: 5,
-      class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
-      isRevealed: false,
-      skillUsesLeft: 0
-    }));
-    
-    setPlayers(defaultPlayersList);
   };
 
   const handleReveal = (playerId: string) => {
@@ -97,14 +119,6 @@ export const PlayerList = () => {
               placeholder="Nom du joueur"
             />
             <button onClick={addPlayer}>Ajouter</button>
-            {players.length === 0 && (
-              <button 
-                onClick={addDefaultPlayers}
-                className={styles.defaultPlayersButton}
-              >
-                Joueurs par défaut
-              </button>
-            )}
           </div>
         </div>
         <Dice />
