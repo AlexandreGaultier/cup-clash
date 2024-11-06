@@ -2,7 +2,7 @@
   background: var(--card-bg-dark);
   border-radius: 16px;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem auto;
   box-shadow: var(--card-shadow-dark);
   width: 100%;
   max-width: 300px;

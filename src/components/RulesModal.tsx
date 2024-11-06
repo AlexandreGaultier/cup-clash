@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import styles from './RulesModal.module.css';
 import { CLASSES } from '../data/classes';
 
@@ -7,11 +8,32 @@ interface RulesModalProps {
 }
 
 export const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (modalRef.current) {
+      const scrollTop = modalRef.current.scrollTop;
+      setShowScrollTop(scrollTop > 200); // Afficher après 200px de scroll
+    }
+  };
+
+  const scrollToTop = () => {
+    modalRef.current?.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
+      <div 
+        ref={modalRef}
+        className={styles.modal}
+        onScroll={handleScroll}
+      >
         <button className={styles.closeButton} onClick={onClose}>×</button>
         <h2>Règles du Cup Clash</h2>
         
@@ -92,6 +114,16 @@ export const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
             ))}
           </div>
         </section>
+        
+        {showScrollTop && (
+          <button 
+            className={styles.scrollTopButton}
+            onClick={scrollToTop}
+            aria-label="Retour en haut"
+          >
+            <span className={styles.arrow}>↑</span>
+          </button>
+        )}
       </div>
     </div>
   );

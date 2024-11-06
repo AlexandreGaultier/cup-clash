@@ -229,3 +229,42 @@ strong {
   font-style: normal;
   margin-right: 0.5rem;
 }
+
+.scrollTopButton {
+  display: none;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #ed8936;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.2s ease;
+}
+
+.arrow {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Afficher uniquement sur mobile */
+@media (max-width: 768px) {
+  .scrollTopButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Assurez-vous que la modale est scrollable sur mobile */
+.modal {
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Pour un défilement fluide sur iOS */
+}
