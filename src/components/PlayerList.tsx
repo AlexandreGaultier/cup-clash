@@ -106,6 +106,15 @@ export const PlayerList = () => {
     setPlayers(players.filter(player => player.id !== playerId));
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Ne garde que les lettres (incluant les accents)
+    const lettersOnly = value.replace(/[^a-zA-ZÀ-ÿ]/g, '');
+    // Limite à 11 caractères
+    const truncated = lettersOnly.slice(0, 11);
+    setNewPlayerName(truncated);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.controlsWrapper}>
@@ -114,9 +123,12 @@ export const PlayerList = () => {
             <input
               type="text"
               value={newPlayerName}
-              onChange={(e) => setNewPlayerName(e.target.value)}
+              onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               placeholder="Nom du joueur"
+              maxLength={11} // Sécurité supplémentaire côté HTML
+              pattern="[a-zA-ZÀ-ÿ]+" // Pattern HTML pour les lettres uniquement
+              title="Lettres uniquement (11 caractères max)" // Message d'aide
             />
             <button onClick={addPlayer}>Ajouter</button>
           </div>

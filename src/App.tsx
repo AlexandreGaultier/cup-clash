@@ -9,8 +9,8 @@ function App() {
   return (
     <div className={styles.app}>
       <header className={styles.header}>
-        <h1>Cup Clash</h1>
-        <p>Le jeu de soirée qui va vous faire trinquer ! 🍻</p>
+        <h1>🥤 Cup Clash ⚔️</h1>
+        <p>Le jeu de soirée qui va vous faire trinquer et lancer des dés ! 🍻🎲</p>
         <button 
           className={styles.rulesButton}
           onClick={() => setIsRulesOpen(true)}
