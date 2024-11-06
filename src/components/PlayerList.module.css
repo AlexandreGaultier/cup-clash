@@ -1,0 +1,31 @@
+.container {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.addPlayer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.addPlayer input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.playerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .playerGrid {
+    grid-template-columns: 1fr;
+  }
+} 

@@ -1,0 +1,53 @@
+.diceContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.dice {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: var(--card-bg-dark);
+  border: 2px solid var(--button-bg-dark);
+  color: var(--text-primary-dark);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dice:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  background: var(--button-bg-dark);
+}
+
+.dice:disabled {
+  opacity: 0.7;
+}
+
+.rolling {
+  animation: roll 0.6s ease infinite;
+}
+
+.diceLabel {
+  color: var(--text-secondary-dark);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
