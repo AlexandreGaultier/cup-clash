@@ -2,43 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './AudioPlayer.module.css';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.5);
+  const [isInitialized, setIsInitialized] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     audioRef.current = new Audio('/src/assets/music/main-theme.mp3');
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
-    
-    const playAudio = () => {
-      if (audioRef.current) {
-        audioRef.current.play()
-          .catch(error => console.error('Erreur de lecture audio:', error));
-      }
-    };
-
-    playAudio();
-
-    const handleInteraction = () => {
-      if (audioRef.current && !audioRef.current.playing) {
-        playAudio();
-      }
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-    };
-
-    document.addEventListener('click', handleInteraction);
-    document.addEventListener('touchstart', handleInteraction);
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-    };
   }, []);
 
   useEffect(() => {
@@ -46,6 +18,17 @@ export const AudioPlayer = () => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  const initializeAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+          setIsInitialized(true);
+        })
+        .catch(error => console.error('Erreur de lecture audio:', error));
+    }
+  };
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -62,6 +45,17 @@ export const AudioPlayer = () => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
   };
+
+  if (!isInitialized) {
+    return (
+      <button 
+        onClick={initializeAudio}
+        className={styles.startButton}
+      >
+        🎵 Jouer la musique
+      </button>
+    );
+  }
 
   return (
     <div className={styles.audioControls}>
