@@ -1,9 +1,11 @@
 export type Class = {
   name: string;
+  emoji: string;
   skill: {
     name: string;
     description: string;
     maxUses: number;
+    passiveEffect?: string;
   };
 };
 
@@ -15,4 +17,5 @@ export type Player = {
   class?: Class;
   isRevealed: boolean;
   skillUsesLeft: number;
+  stolenSkill?: Class['skill'];
 }; 

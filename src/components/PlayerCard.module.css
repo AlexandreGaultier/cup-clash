@@ -71,4 +71,125 @@ button:disabled {
   background: #4a4a4a;
   cursor: not-allowed;
   transform: none;
-} 
+}
+
+.classHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.passiveIndicator {
+  font-size: 0.8rem;
+  background: #ed8936;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  animation: pulse 2s infinite;
+}
+
+.skillDetails {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.skillName {
+  font-weight: bold;
+  color: var(--text-primary-dark);
+  margin-bottom: 0.3rem;
+}
+
+.skillDescription {
+  font-size: 0.9rem;
+  color: var(--text-secondary-dark);
+  margin-bottom: 0.5rem;
+}
+
+.passiveEffect {
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.passiveEffect span {
+  color: #ed8936;
+  font-weight: bold;
+}
+
+.skillUses {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.stolenSkill {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(237, 137, 54, 0.2);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.lowHp .cupFill {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.skillButton {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: var(--button-bg-dark);
+}
+
+.revealButton {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-secondary-dark);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.deleteButton:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff4444;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.classHeader h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

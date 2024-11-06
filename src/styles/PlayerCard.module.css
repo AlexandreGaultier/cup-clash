@@ -1,0 +1,28 @@
+.card {
+  /* ... existing code ... */
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles spécifiques pour chaque classe */
+.Warrior {
+  border-left: 4px solid #c41e3a;
+}
+
+.Mage {
+  border-left: 4px solid #4169e1;
+}
+
+.Rogue {
+  border-left: 4px solid #32cd32;
+}
+
+.Priest {
+  border-left: 4px solid #ffd700;
+} 

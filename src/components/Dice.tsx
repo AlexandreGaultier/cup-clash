@@ -34,7 +34,6 @@ export const Dice = () => {
       >
         {value}
       </button>
-      <p className={styles.diceLabel}>Lancer le dé</p>
     </div>
   );
 }; 
