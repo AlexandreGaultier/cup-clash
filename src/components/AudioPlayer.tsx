@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './AudioPlayer.module.css';
+import mainTheme from '/music/main-theme.mp3';
 
 export const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -8,9 +9,30 @@ export const AudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('/music/main-theme.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = volume;
+    try {
+      const audio = new Audio(mainTheme);
+      audio.loop = true;
+      audio.volume = volume;
+
+      audio.addEventListener('loadeddata', () => {
+        console.log('Audio chargé avec succès');
+      });
+
+      audio.addEventListener('error', (e) => {
+        console.error('Erreur de chargement audio:', e);
+      });
+
+      audioRef.current = audio;
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation audio:', error);
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
