@@ -122,10 +122,39 @@ button:disabled {
 
 .skillUses {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   margin-top: 0.5rem;
-  font-size: 0.9rem;
+}
+
+.skillUsesControls {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+}
+
+.skillUsesButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.skillUsesButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.skillUsesButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .stolenSkill {

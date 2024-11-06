@@ -43,20 +43,24 @@ export const PlayerList = () => {
       class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
       skillUsesLeft: 2
     }
-  ]);
+  ].map(player => ({
+    ...player,
+    skillUsesLeft: player.class?.skill.maxUses || 0
+  })));
 
   const [newPlayerName, setNewPlayerName] = useState('');
 
   const addPlayer = () => {
     if (newPlayerName.trim()) {
+      const randomClass = CLASSES[Math.floor(Math.random() * CLASSES.length)];
       const newPlayer: Player = {
         id: crypto.randomUUID(),
         name: newPlayerName.trim(),
         hp: 5,
         maxHp: 5,
-        class: CLASSES[Math.floor(Math.random() * CLASSES.length)],
         isRevealed: false,
-        skillUsesLeft: 0
+        class: randomClass,
+        skillUsesLeft: randomClass.skill.maxUses
       };
       
       setPlayers([...players, newPlayer]);
@@ -110,6 +114,20 @@ export const PlayerList = () => {
     setNewPlayerName(truncated);
   };
 
+  const handleUpdateSkillUses = (playerId: string, change: number) => {
+    setPlayers(players.map(player => 
+      player.id === playerId
+        ? {
+            ...player,
+            skillUsesLeft: Math.max(0, Math.min(
+              player.skillUsesLeft + change,
+              player.class?.skill.maxUses || 0
+            ))
+          }
+        : player
+    ));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.controlsWrapper}>
@@ -140,6 +158,7 @@ export const PlayerList = () => {
             onUseSkill={handleUseSkill}
             onUpdateHp={handleUpdateHp}
             onDelete={handleDeletePlayer}
+            onUpdateSkillUses={handleUpdateSkillUses}
           />
         ))}
       </div>

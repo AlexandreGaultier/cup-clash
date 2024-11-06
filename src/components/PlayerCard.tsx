@@ -7,9 +7,10 @@ interface PlayerCardProps {
   onUseSkill: (playerId: string) => void;
   onUpdateHp: (playerId: string, change: number) => void;
   onDelete: (playerId: string) => void;
+  onUpdateSkillUses: (playerId: string, change: number) => void;
 }
 
-export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete }: PlayerCardProps) => {
+export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete, onUpdateSkillUses }: PlayerCardProps) => {
   const hpPercentage = (player.hp / player.maxHp) * 100;
 
   const renderSkillInfo = () => {
@@ -50,6 +51,24 @@ export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete 
 
           <div className={styles.skillUses}>
             <span>Utilisations:</span> {usesDisplay}
+            {player.class.name === 'Assassin' && (
+              <div className={styles.skillUsesControls}>
+                <button 
+                  onClick={() => onUpdateSkillUses(player.id, -1)}
+                  className={styles.skillUsesButton}
+                  disabled={player.skillUsesLeft <= 0}
+                >
+                  -
+                </button>
+                <button 
+                  onClick={() => onUpdateSkillUses(player.id, 1)}
+                  className={styles.skillUsesButton}
+                  disabled={player.skillUsesLeft >= skill.maxUses}
+                >
+                  +
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
