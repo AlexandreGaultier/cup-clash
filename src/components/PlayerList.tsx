@@ -71,16 +71,11 @@ export const PlayerList = () => {
   };
 
   const handleReveal = (playerId: string) => {
-    setPlayers(players.map(player => {
-      if (player.id === playerId) {
-        return {
-          ...player,
-          isRevealed: true,
-          skillUsesLeft: player.class?.skill.maxUses || 0
-        };
-      }
-      return player;
-    }));
+    setPlayers(players.map(player => 
+      player.id === playerId 
+        ? { ...player, isRevealed: !player.isRevealed }
+        : player
+    ));
   };
 
   const handleUseSkill = (playerId: string) => {

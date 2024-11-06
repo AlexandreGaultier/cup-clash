@@ -26,6 +26,13 @@ export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete 
           <h4>
             {player.class.emoji} {player.class.name}
           </h4>
+          <button 
+            onClick={() => onReveal(player.id)}
+            className={styles.hideButton}
+            title="Cacher la classe"
+          >
+            x
+          </button>
           {player.hp <= 2 && player.class.name === 'Berserker' && (
             <span className={styles.passiveIndicator}>Rage Active!</span>
           )}
