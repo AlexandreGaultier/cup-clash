@@ -15,7 +15,7 @@ export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete 
   const renderSkillInfo = () => {
     if (!player.class) return null;
 
-    const { name: className, skill } = player.class;
+    const { skill } = player.class;
     const usesDisplay = skill.maxUses === Infinity 
       ? '∞' 
       : `${player.skillUsesLeft}/${skill.maxUses}`;
