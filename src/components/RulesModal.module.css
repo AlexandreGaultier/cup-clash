@@ -118,3 +118,63 @@ section:first-of-type li {
     grid-template-columns: 1fr;
   }
 }
+
+.ruleSection {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.ruleSection h4 {
+  color: #ed8936;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.ruleSection ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0;
+}
+
+.ruleSection li {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.ruleSection li:before {
+  content: "•";
+  color: #ed8936;
+  position: absolute;
+  left: 0;
+}
+
+.diceResults li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dice {
+  background: #ed8936;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.note {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #a0aec0;
+  margin-top: 1rem;
+}
+
+strong {
+  color: #ed8936;
+  font-weight: 600;
+}

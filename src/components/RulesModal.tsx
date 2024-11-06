@@ -17,14 +17,50 @@ export const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
         
         <section>
           <h3>Règles de base</h3>
-          <p>
-            Les dégâts de base sont déterminés par un lancé de dé :
-          </p>
-          <ul>
-            <li>1 - 2 : 0 point de dégâts</li>
-            <li>3 - 4 : 1 point de dégâts</li>
-            <li>5 - 6 : 2 points de dégâts</li>
-          </ul>
+          
+          <div className={styles.ruleSection}>
+            <h4>Objectif</h4>
+            <p>Être le dernier joueur en vie en utilisant des compétences uniques et en jouant de façon stratégique.</p>
+          </div>
+
+          <div className={styles.ruleSection}>
+            <h4>Mise en place</h4>
+            <ul>
+              <li>Chaque joueur commence avec <strong>5 points de vie</strong></li>
+              <li>Les classes sont distribuées <strong>aléatoirement</strong> et gardées <strong>secrètes</strong></li>
+              <li>Le joueur le plus "loyal" (vote collectif) commence la partie</li>
+            </ul>
+          </div>
+
+          <div className={styles.ruleSection}>
+            <h4>Tour de jeu</h4>
+            <p>À son tour, un joueur peut attaquer un adversaire adjacent (gauche ou droite)*</p>
+            <p>Les dégâts sont déterminés par un lancé de dé :</p>
+            <ul className={styles.diceResults}>
+              <li><span className={styles.dice}>1</span> Échec critique ! Dites quelque chose de gentil et sincère sur le joueur que vous attaquez ou perdez 1 PV</li>
+              <li><span className={styles.dice}>2</span> L'attaque échoue</li>
+              <li><span className={styles.dice}>3-4</span> 1 point de dégâts</li>
+              <li><span className={styles.dice}>5-6</span> 2 points de dégâts</li>
+            </ul>
+            <p className={styles.note}>* Certaines classes peuvent avoir des exceptions à cette règle</p>
+          </div>
+
+          <div className={styles.ruleSection}>
+            <h4>Pouvoirs spéciaux</h4>
+            <ul>
+              <li>Un joueur révèle sa classe uniquement lorsqu'il utilise son pouvoir</li>
+              <li>Les pouvoirs ont un nombre limité d'utilisations</li>
+              <li>Certaines classes ont des effets passifs permanents</li>
+            </ul>
+          </div>
+
+          <div className={styles.ruleSection}>
+            <h4>Fin de partie</h4>
+            <ul>
+              <li>Le dernier joueur en vie remporte la partie</li>
+              <li>Si un Nécromancien a un sbire en vie, il gagne aussi</li>
+            </ul>
+          </div>
         </section>
 
         <section>
