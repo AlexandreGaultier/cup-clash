@@ -128,6 +128,21 @@ export const PlayerList = () => {
     ));
   };
 
+  const handleStealClass = (playerId: string, className: string) => {
+    setPlayers(players.map(player => {
+      if (player.id !== playerId) return player;
+      
+      const stolenClass = CLASSES.find(c => c.name === className);
+      if (!stolenClass) return player;
+
+      return {
+        ...player,
+        stolenClass,
+        skillUsesLeft: stolenClass.skill.maxUses
+      };
+    }));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.controlsWrapper}>
@@ -159,6 +174,7 @@ export const PlayerList = () => {
             onUpdateHp={handleUpdateHp}
             onDelete={handleDeletePlayer}
             onUpdateSkillUses={handleUpdateSkillUses}
+            onStealClass={handleStealClass}
           />
         ))}
       </div>

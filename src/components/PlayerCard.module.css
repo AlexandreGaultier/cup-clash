@@ -251,3 +251,22 @@ button:disabled {
 .hideButton:active {
   transform: scale(0.95);
 }
+
+.stealClassSelector {
+  margin-top: 1rem;
+}
+
+.classSelect {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.classSelect option {
+  background: #2d3748;
+  color: white;
+}

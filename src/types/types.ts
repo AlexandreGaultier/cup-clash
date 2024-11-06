@@ -18,4 +18,5 @@ export type Player = {
   isRevealed: boolean;
   skillUsesLeft: number;
   stolenSkill?: Class['skill'];
+  stolenClass?: Class;
 }; 

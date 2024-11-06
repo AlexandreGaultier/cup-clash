@@ -1,4 +1,5 @@
 import { Player } from '../types/types';
+import { CLASSES } from '../data/classes';
 import styles from './PlayerCard.module.css';
 
 interface PlayerCardProps {
@@ -8,9 +9,10 @@ interface PlayerCardProps {
   onUpdateHp: (playerId: string, change: number) => void;
   onDelete: (playerId: string) => void;
   onUpdateSkillUses: (playerId: string, change: number) => void;
+  onStealClass: (playerId: string, className: string) => void;
 }
 
-export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete, onUpdateSkillUses }: PlayerCardProps) => {
+export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete, onUpdateSkillUses, onStealClass }: PlayerCardProps) => {
   const hpPercentage = (player.hp / player.maxHp) * 100;
 
   const renderSkillInfo = () => {
@@ -20,6 +22,72 @@ export const PlayerCard = ({ player, onReveal, onUseSkill, onUpdateHp, onDelete,
     const usesDisplay = skill.maxUses === Infinity 
       ? '∞' 
       : `${player.skillUsesLeft}/${skill.maxUses}`;
+
+    if (player.class.name === 'Voleur' && player.stolenClass) {
+      return (
+        <div className={styles.classInfo}>
+          <div className={styles.classHeader}>
+            <h4>
+              {player.stolenClass.emoji} {player.stolenClass.name} (Volé)
+            </h4>
+            <button 
+              onClick={() => onReveal(player.id)}
+              className={styles.hideButton}
+              title="Cacher la classe"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className={styles.skillDetails}>
+            <p className={styles.skillName}>{player.stolenClass.skill.name}</p>
+            <p className={styles.skillDescription}>{player.stolenClass.skill.description}</p>
+            <div className={styles.skillUses}>
+              <span>Utilisations:</span> {usesDisplay}
+            </div>
+          </div>
+
+          <button 
+            onClick={() => onUseSkill(player.id)}
+            disabled={player.skillUsesLeft === 0}
+            className={styles.skillButton}
+          >
+            Utiliser le pouvoir volé
+          </button>
+        </div>
+      );
+    }
+
+    if (player.class.name === 'Voleur' && !player.stolenClass) {
+      return (
+        <div className={styles.classInfo}>
+          <div className={styles.classHeader}>
+            <h4>{player.class.emoji} {player.class.name}</h4>
+            <button 
+              onClick={() => onReveal(player.id)}
+              className={styles.hideButton}
+              title="Cacher la classe"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className={styles.stealClassSelector}>
+            <select 
+              onChange={(e) => onStealClass(player.id, e.target.value)}
+              className={styles.classSelect}
+            >
+              <option value="">Sélectionner une classe à voler</option>
+              {CLASSES.filter(c => c.name !== 'Voleur').map(c => (
+                <option key={c.name} value={c.name}>
+                  {c.emoji} {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div className={styles.classInfo}>
