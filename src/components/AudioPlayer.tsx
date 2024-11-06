@@ -52,7 +52,7 @@ export const AudioPlayer = () => {
         onClick={initializeAudio}
         className={styles.startButton}
       >
-        🎵 Jouer la musique
+        Jouer la musique
       </button>
     );
   }

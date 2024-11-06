@@ -66,7 +66,7 @@ export const CLASSES: Class[] = [
       name: 'Résurrection',
       description: 'Fait revenir un joueur mort avec 2 PV, qui doit obéir au Nécromancien.',
       maxUses: 1,
-      passiveEffect: 'Si le Nécromancien meurt mais que son sbire gagne, le Nécromancien remporte également la partie.'
+      passiveEffect: 'Si le Nécromancien meurt mais que son sbire gagne, le Nécromancien remporte la partie.'
     }
   },
   {
@@ -83,7 +83,7 @@ export const CLASSES: Class[] = [
     emoji: '💰',
     skill: {
       name: 'Larcin',
-      description: 'Une fois par partie, vole le pouvoir spécial d\'un autre joueur. Le nombre d\'utilisations du pouvoir volé est le nombre maximal.',
+      description: 'Une fois par partie, vole le pouvoir spécial d\'un autre joueur révélé. Le nombre d\'utilisations du pouvoir volé est le nombre maximal.',
       maxUses: 1,
     }
   },
