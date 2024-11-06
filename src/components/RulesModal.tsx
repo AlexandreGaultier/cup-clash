@@ -33,8 +33,12 @@ export const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
           </div>
 
           <div className={styles.ruleSection}>
+            <h4>Choix du premier joueur</h4>
+            <p>Le joueur le plus "loyal" (vote collectif) commence la partie</p>
+          </div>
+          <div className={styles.ruleSection}>
             <h4>Tour de jeu</h4>
-            <p>À son tour, un joueur peut attaquer un adversaire adjacent (gauche ou droite)*</p>
+            <p>À son tour, un joueur peut attaquer un adversaire <strong>adjacent</strong> (gauche ou droite)*</p>
             <p>Les dégâts sont déterminés par un lancé de dé :</p>
             <ul className={styles.diceResults}>
               <li><span className={styles.dice}>1</span> Échec critique ! Dites quelque chose de gentil et sincère sur le joueur que vous attaquez ou perdez 1 PV</li>
@@ -68,14 +72,22 @@ export const RulesModal = ({ isOpen, onClose }: RulesModalProps) => {
           <div className={styles.classesList}>
             {CLASSES.map(classInfo => (
               <div key={classInfo.name} className={styles.classItem}>
-                <h2>{classInfo.name}</h2>
+                <div className={styles.classHeader}>
+                  <h2>{classInfo.emoji} {classInfo.name}</h2>
+                </div>
                 <hr />
-                <p>{classInfo.skill.description}</p>
-                {classInfo.skill.passiveEffect && (
-                  <p className={styles.passiveEffect}>
-                    <span>Passif:</span> {classInfo.skill.passiveEffect}
+                <div className={styles.skillInfo}>
+                  <h4>{classInfo.skill.name}</h4>
+                  <p className={styles.skillDescription}>
+                    <span className={styles.uses}>({classInfo.skill.maxUses} utilisations)</span>
+                    {classInfo.skill.description}
                   </p>
-                )}
+                  {classInfo.skill.passiveEffect && (
+                    <p className={styles.passiveEffect}>
+                      <span>Passif:</span> {classInfo.skill.passiveEffect}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>

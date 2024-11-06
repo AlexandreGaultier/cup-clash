@@ -16,7 +16,7 @@ export const CLASSES: Class[] = [
     emoji: '🏹',
     skill: {
       name: 'Tir à Distance',
-      description: 'Ignore la restriction de proximité pour cibler n\'importe qui.',
+      description: 'Pas de capacité spéciale. Ignore la restriction de proximité pour cibler n\'importe qui.',
       maxUses: Infinity,
       passiveEffect: 'Peut attaquer n\'importe quel joueur autour de la table'
     }
@@ -26,9 +26,8 @@ export const CLASSES: Class[] = [
     emoji: '🔮',
     skill: {
       name: 'Contre-Sort',
-      description: 'Si attaqué, lance un dé. Sur un 6, renvoie les dégâts à l\'attaquant.',
+      description: 'Si attaqué, annule l\'attaque et lance un dé. Sur un 6, renvoie les dégâts à l\'attaquant.',
       maxUses: 3,
-      passiveEffect: 'Peut se défendre contre une attaque'
     }
   },
   {
@@ -37,7 +36,8 @@ export const CLASSES: Class[] = [
     skill: {
       name: 'Soin Divin',
       description: 'Restaure un point de vie à un joueur au choix (sauf soi-même).',
-      maxUses: 2
+      maxUses: 2,
+      passiveEffect: 'Au début de son tour, récupère 1 PV si le joueur dit quelque chose de gentil et sincère à un autre joueur'
     }
   },
   {
@@ -45,9 +45,8 @@ export const CLASSES: Class[] = [
     emoji: '🔪',
     skill: {
       name: 'Coup Fatal',
-      description: 'Inflige automatiquement 2 dégâts lors d\'une attaque.',
+      description: 'Inflige automatiquement 2 dégâts lors d\'une attaque. Si l\'Assassin tue un joueur avec sa capacité spéciale, il récupère l\'utilisation de sa capacité spéciale.',
       maxUses: 1,
-      passiveEffect: 'Si tue un joueur, récupère sa capacité spéciale'
     }
   },
   {
@@ -55,9 +54,9 @@ export const CLASSES: Class[] = [
     emoji: '🔥',
     skill: {
       name: 'Rage Sanguinaire',
-      description: 'Inflige +1 dégât lors de sa prochaine attaque.',
-      maxUses: 2,
-      passiveEffect: 'Bonus de +1 en attaque si PV ≤ 2'
+      description: 'Le Berserker n\'a pas de capacité spéciale. Il frappe plus fort s\'il a 2 PV ou moins.',
+      maxUses: 0,
+      passiveEffect: 'S\'il a 2 PV ou moins, le Berserker inflige +1 dégât lors de sa prochaine attaque.'
     }
   },
   {
@@ -67,7 +66,7 @@ export const CLASSES: Class[] = [
       name: 'Résurrection',
       description: 'Fait revenir un joueur mort avec 2 PV, qui doit obéir au Nécromancien.',
       maxUses: 1,
-      passiveEffect: 'Si son sbire gagne, le Nécromancien remporte aussi la partie'
+      passiveEffect: 'Si le Nécromancien meurt mais que son sbire gagne, le Nécromancien remporte également la partie.'
     }
   },
   {
@@ -75,8 +74,8 @@ export const CLASSES: Class[] = [
     emoji: '🧪',
     skill: {
       name: 'Potion Explosive',
-      description: 'Ajoute +1 dégât à une attaque, puis inflige 1 dégât à un joueur aléatoire.',
-      maxUses: 2
+      description: 'Ajoute +1 dégât à une attaque, puis sélectionne un autre joueur pour lui infliger un dégât.',
+      maxUses: 2,
     }
   },
   {
@@ -84,9 +83,8 @@ export const CLASSES: Class[] = [
     emoji: '💰',
     skill: {
       name: 'Larcin',
-      description: 'Vole le pouvoir spécial non utilisé d\'un autre joueur.',
+      description: 'Une fois par partie, vole le pouvoir spécial d\'un autre joueur. Le nombre d\'utilisations du pouvoir volé est le nombre maximal.',
       maxUses: 1,
-      passiveEffect: 'Le pouvoir volé conserve son nombre d\'utilisations d\'origine'
     }
   },
   {
@@ -94,8 +92,8 @@ export const CLASSES: Class[] = [
     emoji: '🛡️',
     skill: {
       name: 'Protection Divine',
-      description: 'Réduit de moitié les dégâts reçus.',
-      maxUses: 2,
+      description: 'Réduit de moitié les dégâts reçus (minimum 1 dégât).',
+      maxUses: 3,
       passiveEffect: 'Regagne 1 PV chaque fois qu\'il protège un autre joueur'
     }
   }

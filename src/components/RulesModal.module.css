@@ -178,3 +178,54 @@ strong {
   color: #ed8936;
   font-weight: 600;
 }
+
+.classHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.classHeader h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.skillInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skillInfo h4 {
+  color: #ed8936;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.skillDescription {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.uses {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-right: 0.5rem;
+}
+
+.passiveEffect {
+  color: #ccc;
+  font-style: italic;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.passiveEffect span {
+  color: #ed8936;
+  font-weight: bold;
+  font-style: normal;
+  margin-right: 0.5rem;
+}
